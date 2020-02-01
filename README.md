@@ -60,7 +60,52 @@ Provide a set of open-sourced services that I believe should be available by def
 [![NPM](https://img.shields.io/badge/5.4.2-green.svg?logo=npm&label=npm&style=for-the-badge)](https://nodejs.org/en/download/)
 [![grunt-cli](https://img.shields.io/badge/1.2.0-green.svg?label=grunt-cli&style=for-the-badge)](https://gruntjs.com/getting-started#installing-the-cli)
 
-## Installation
+### Installation ###
+git clone https://github.com/Tarmgas/cryptonote-explorer
+cd cryptonote-explorer
+npm update
+npm install
+sudo npm i -g grunt grunt-cli
+
+To build run
+```bash
+grunt build
+```
+		
+	api via mongodb.
+
+install mongodb:
+    sudo apt update
+    sudo apt install -y mongodb
+check status / start / stop / restart
+    sudo systemctl status mongodb
+open default port 27017 in firewall
+    sudo ufw allow 27017
+change bind ip/port, remember comma: run: sudo nano /etc/mongodb.conf
+bind_ip = 127.0.0.1,192.168.1.100
+    sudo systemctl restart mongodb
+
+Create user and make database:  
+in terminal write: mongo
+---first change to admin db and make adminuser.
+use admin
+db.createUser({user:"admin",pwd:"Balletryne20",roles:["root"]})
+
+---create coin databse and user
+use COIN
+db.createUser({user: "coinuser",pwd: "P4ssw0rd",roles: [{ role: "readWrite", db: "GNS" }]})
+
+---howto delete user:       db.dropUser("username")
+
+## Config
+> This example config file is located under `lib/config-example.js`
+> After entering your own data, save the file under `lib/config.js`
+
+### run: npm start ###
+
+
+
+OLD: ## Installation
 > **Important:** Make sure you have the above dependencies installed.
 
 ```bash
