@@ -62,40 +62,59 @@ Provide a set of open-sourced services that I believe should be available by def
 
 ### Installation ###
 git clone https://github.com/Tarmgas/cryptonote-explorer
+```bash
 cd cryptonote-explorer
 npm update
 npm install
 sudo npm i -g grunt grunt-cli
+```
 
 To build run
 ```bash
 grunt build
 ```
 		
-	api via mongodb.
+api via mongodb.
 
 install mongodb:
+```bash
     sudo apt update
     sudo apt install -y mongodb
+    ```
 check status / start / stop / restart
+```bash
     sudo systemctl status mongodb
+    ```
 open default port 27017 in firewall
+```bash
     sudo ufw allow 27017
+    ```
 change bind ip/port, remember comma: run: sudo nano /etc/mongodb.conf
+```bash
 bind_ip = 127.0.0.1,192.168.1.100
-    sudo systemctl restart mongodb
+```
+```bash
+sudo systemctl restart mongodb
+```
 
 Create user and make database:  
 in terminal write: mongo
 ---first change to admin db and make adminuser.
+```bash
 use admin
 db.createUser({user:"admin",pwd:"Balletryne20",roles:["root"]})
+```
 
 ---create coin databse and user
+```bash
 use COIN
 db.createUser({user: "coinuser",pwd: "P4ssw0rd",roles: [{ role: "readWrite", db: "GNS" }]})
+```
 
----howto delete user:       db.dropUser("username")
+---howto delete user:       
+```bash
+db.dropUser("username")
+```
 
 ## Config
 > This example config file is located under `lib/config-example.js`
